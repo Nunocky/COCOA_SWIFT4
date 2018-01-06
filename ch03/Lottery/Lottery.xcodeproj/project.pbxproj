@@ -7,24 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9905E9B22000A7F500A1E2F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9905E9B12000A7F500A1E2F3 /* AppDelegate.swift */; };
-		9905E9B42000A7F500A1E2F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9905E9B32000A7F500A1E2F3 /* Assets.xcassets */; };
-		9905E9B72000A7F500A1E2F3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9905E9B52000A7F500A1E2F3 /* MainMenu.xib */; };
-		9905E9C12000A94600A1E2F3 /* RandomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9905E9BF2000A94600A1E2F3 /* RandomController.swift */; };
+		9905E9D02000B18200A1E2F3 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9905E9CF2000B18200A1E2F3 /* main.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		9905E9CA2000B18200A1E2F3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		9905E9AE2000A7F400A1E2F3 /* Random.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Random.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9905E9B12000A7F500A1E2F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9905E9B32000A7F500A1E2F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		9905E9B62000A7F500A1E2F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		9905E9B82000A7F500A1E2F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9905E9B92000A7F500A1E2F3 /* Random.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Random.entitlements; sourceTree = "<group>"; };
-		9905E9BF2000A94600A1E2F3 /* RandomController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomController.swift; sourceTree = "<group>"; };
+		9905E9CC2000B18200A1E2F3 /* Lottery */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Lottery; sourceTree = BUILT_PRODUCTS_DIR; };
+		9905E9CF2000B18200A1E2F3 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		9905E9AB2000A7F400A1E2F3 /* Frameworks */ = {
+		9905E9C92000B18200A1E2F3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -34,126 +38,96 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9905E9A52000A7F400A1E2F3 = {
+		9905E9C32000B18200A1E2F3 = {
 			isa = PBXGroup;
 			children = (
-				9905E9B02000A7F400A1E2F3 /* Random */,
-				9905E9AF2000A7F400A1E2F3 /* Products */,
+				9905E9CE2000B18200A1E2F3 /* Lottery */,
+				9905E9CD2000B18200A1E2F3 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		9905E9AF2000A7F400A1E2F3 /* Products */ = {
+		9905E9CD2000B18200A1E2F3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9905E9AE2000A7F400A1E2F3 /* Random.app */,
+				9905E9CC2000B18200A1E2F3 /* Lottery */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9905E9B02000A7F400A1E2F3 /* Random */ = {
+		9905E9CE2000B18200A1E2F3 /* Lottery */ = {
 			isa = PBXGroup;
 			children = (
-				9905E9B12000A7F500A1E2F3 /* AppDelegate.swift */,
-				9905E9B32000A7F500A1E2F3 /* Assets.xcassets */,
-				9905E9B52000A7F500A1E2F3 /* MainMenu.xib */,
-				9905E9B82000A7F500A1E2F3 /* Info.plist */,
-				9905E9B92000A7F500A1E2F3 /* Random.entitlements */,
-				9905E9BF2000A94600A1E2F3 /* RandomController.swift */,
+				9905E9CF2000B18200A1E2F3 /* main.swift */,
 			);
-			path = Random;
+			path = Lottery;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9905E9AD2000A7F400A1E2F3 /* Random */ = {
+		9905E9CB2000B18200A1E2F3 /* Lottery */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9905E9BC2000A7F500A1E2F3 /* Build configuration list for PBXNativeTarget "Random" */;
+			buildConfigurationList = 9905E9D32000B18200A1E2F3 /* Build configuration list for PBXNativeTarget "Lottery" */;
 			buildPhases = (
-				9905E9AA2000A7F400A1E2F3 /* Sources */,
-				9905E9AB2000A7F400A1E2F3 /* Frameworks */,
-				9905E9AC2000A7F400A1E2F3 /* Resources */,
+				9905E9C82000B18200A1E2F3 /* Sources */,
+				9905E9C92000B18200A1E2F3 /* Frameworks */,
+				9905E9CA2000B18200A1E2F3 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Random;
-			productName = Random;
-			productReference = 9905E9AE2000A7F400A1E2F3 /* Random.app */;
-			productType = "com.apple.product-type.application";
+			name = Lottery;
+			productName = Lottery;
+			productReference = 9905E9CC2000B18200A1E2F3 /* Lottery */;
+			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		9905E9A62000A7F400A1E2F3 /* Project object */ = {
+		9905E9C42000B18200A1E2F3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "NUNOKAWA Masato";
 				TargetAttributes = {
-					9905E9AD2000A7F400A1E2F3 = {
+					9905E9CB2000B18200A1E2F3 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 9905E9A92000A7F400A1E2F3 /* Build configuration list for PBXProject "Random" */;
+			buildConfigurationList = 9905E9C72000B18200A1E2F3 /* Build configuration list for PBXProject "Lottery" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 			);
-			mainGroup = 9905E9A52000A7F400A1E2F3;
-			productRefGroup = 9905E9AF2000A7F400A1E2F3 /* Products */;
+			mainGroup = 9905E9C32000B18200A1E2F3;
+			productRefGroup = 9905E9CD2000B18200A1E2F3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9905E9AD2000A7F400A1E2F3 /* Random */,
+				9905E9CB2000B18200A1E2F3 /* Lottery */,
 			);
 		};
 /* End PBXProject section */
 
-/* Begin PBXResourcesBuildPhase section */
-		9905E9AC2000A7F400A1E2F3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9905E9B42000A7F500A1E2F3 /* Assets.xcassets in Resources */,
-				9905E9B72000A7F500A1E2F3 /* MainMenu.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		9905E9AA2000A7F400A1E2F3 /* Sources */ = {
+		9905E9C82000B18200A1E2F3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9905E9C12000A94600A1E2F3 /* RandomController.swift in Sources */,
-				9905E9B22000A7F500A1E2F3 /* AppDelegate.swift in Sources */,
+				9905E9D02000B18200A1E2F3 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		9905E9B52000A7F500A1E2F3 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9905E9B62000A7F500A1E2F3 /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		9905E9BA2000A7F500A1E2F3 /* Debug */ = {
+		9905E9D12000B18200A1E2F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -210,7 +184,7 @@
 			};
 			name = Debug;
 		};
-		9905E9BB2000A7F500A1E2F3 /* Release */ = {
+		9905E9D22000B18200A1E2F3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -259,33 +233,21 @@
 			};
 			name = Release;
 		};
-		9905E9BD2000A7F500A1E2F3 /* Debug */ = {
+		9905E9D42000B18200A1E2F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Random/Random.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = TW4485J423;
-				INFOPLIST_FILE = Random/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.nunocky.Random;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
-		9905E9BE2000A7F500A1E2F3 /* Release */ = {
+		9905E9D52000B18200A1E2F3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Random/Random.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = TW4485J423;
-				INFOPLIST_FILE = Random/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.nunocky.Random;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 			};
@@ -294,25 +256,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9905E9A92000A7F400A1E2F3 /* Build configuration list for PBXProject "Random" */ = {
+		9905E9C72000B18200A1E2F3 /* Build configuration list for PBXProject "Lottery" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9905E9BA2000A7F500A1E2F3 /* Debug */,
-				9905E9BB2000A7F500A1E2F3 /* Release */,
+				9905E9D12000B18200A1E2F3 /* Debug */,
+				9905E9D22000B18200A1E2F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9905E9BC2000A7F500A1E2F3 /* Build configuration list for PBXNativeTarget "Random" */ = {
+		9905E9D32000B18200A1E2F3 /* Build configuration list for PBXNativeTarget "Lottery" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9905E9BD2000A7F500A1E2F3 /* Debug */,
-				9905E9BE2000A7F500A1E2F3 /* Release */,
+				9905E9D42000B18200A1E2F3 /* Debug */,
+				9905E9D52000B18200A1E2F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 9905E9A62000A7F400A1E2F3 /* Project object */;
+	rootObject = 9905E9C42000B18200A1E2F3 /* Project object */;
 }

@@ -8,12 +8,28 @@
 
 import Cocoa
 
-class RandomController: NSWindowController {
+class RandomController: NSObject {
 
-    override func windowDidLoad() {
-        super.windowDidLoad()
-
-        // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    @IBOutlet weak var textField: NSTextField!
+    
+    @IBAction func seed(_ sender: Any) {
+        arc4random_stir();
+    }
+    
+    @IBAction func generate(_ sender: Any) {
+//        let generated = (arc4random() % 100) + 1
+        //        textField.stringValue = String(generated)
+        let generated = arc4random_uniform(100) + 1
+        textField.stringValue = String(generated)
+    }
+    
+    override func awakeFromNib() {
+        let now = Date()
+        let formatter = DateFormatter()
+        formatter.dateStyle = .full
+        formatter.locale = Locale(identifier: "ja_JP")
+        //formatter.dateFormat = "yyyy年MM月dd日 HH:mm"
+        textField.stringValue = formatter.string(from: now)
     }
     
 }
