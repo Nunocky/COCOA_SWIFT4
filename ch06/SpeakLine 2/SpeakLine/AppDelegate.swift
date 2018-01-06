@@ -9,10 +9,13 @@
 import Cocoa
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate, NSSpeechSynthesizerDelegate, NSTableViewDataSource {
+class AppDelegate: NSObject, NSApplicationDelegate, NSSpeechSynthesizerDelegate, NSTableViewDataSource , NSTableViewDelegate {
 
     @IBOutlet weak var window: NSWindow!
     @IBOutlet weak var textField: NSTextField!
+    @IBOutlet weak var stopButton: NSButton!
+    @IBOutlet weak var speakButton: NSButton!
+    @IBOutlet weak var tableView: NSTableView!
     
     var speechSynth : NSSpeechSynthesizer!
     var voices : [NSSpeechSynthesizer.VoiceName]!
@@ -23,6 +26,17 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSpeechSynthesizerDelegate,
         speechSynth.delegate = self
         
         voices = NSSpeechSynthesizer.availableVoices
+    }
+
+    override func awakeFromNib() {
+        let defaultVoice = NSSpeechSynthesizer.defaultVoice
+        guard let defaultRow = voices.index(of: defaultVoice) else {
+            return
+        }
+        
+        let indices = IndexSet(integer: defaultRow)
+        tableView.selectRowIndexes(indices, byExtendingSelection: false)
+        tableView.scrollRowToVisible(defaultRow)
     }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -45,12 +59,16 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSpeechSynthesizerDelegate,
         }
         
         speechSynth.startSpeaking(string)
+        stopButton.isEnabled = true
+        speakButton.isEnabled = false
     }
     
     // MARK: - NSSpeechSynthesizerDelegate
     func speechSynthesizer(_ sender: NSSpeechSynthesizer, didFinishSpeaking finishedSpeaking: Bool) {
-        let v = finishedSpeaking ? 1 : 0
-        NSLog("finishedSpeaking=%d", v)
+        //let v = finishedSpeaking ? 1 : 0
+        //NSLog("finishedSpeaking=%d", v)
+        stopButton.isEnabled = false
+        speakButton.isEnabled = true
     }
     
     // MARK: - NSTableViewDataSource
@@ -59,7 +77,24 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSpeechSynthesizerDelegate,
     }
     
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-        return voices[row]
+        let vn : NSSpeechSynthesizer.VoiceName = voices[row]
+        let dict = NSSpeechSynthesizer.attributes(forVoice: vn)
+        return dict[NSSpeechSynthesizer.VoiceAttributeKey.name]
+    }
+
+    func selectionShouldChange(in tableView: NSTableView) -> Bool {
+        return true
+    }
+    
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        let row = tableView.selectedRow
+        if row == -1 {
+            return
+        }
+
+        let selectedVoice = voices[row]
+        speechSynth.setVoice(selectedVoice)
+        NSLog("new voice = %@", selectedVoice.rawValue)
     }
 
 }
