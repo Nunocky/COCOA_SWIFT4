@@ -10,4 +10,35 @@ import Cocoa
 
 class LotteryEntry: NSObject {
 
+    var firstNumber : Int // = 0
+    var secondNumber : Int // = 0
+    var entryDate : Date // = Date()
+
+    override init() {
+        firstNumber = Int(arc4random_uniform(100) + 1)
+        secondNumber = Int(arc4random_uniform(100) + 1)
+        entryDate = Date()
+    }
+
+    convenience init(withEntryDate date: Date) {
+        self.init()
+        entryDate = date
+    }
+    
+//    func prepareRandomNumbers() {
+//        firstNumber = Int(arc4random_uniform(100) + 1)
+//        secondNumber = Int(arc4random_uniform(100) + 1)
+//    }
+
+    override var description: String {
+        let df = DateFormatter()
+        df.timeStyle = .none
+        df.dateStyle = .medium
+        
+        let result = String(format: "%@ = %d and %d",
+                            df.string(from: entryDate),
+                            firstNumber,
+                            secondNumber)
+        return result
+    }
 }
