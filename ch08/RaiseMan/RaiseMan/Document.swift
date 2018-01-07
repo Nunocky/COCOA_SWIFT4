@@ -10,7 +10,24 @@ import Cocoa
 
 class Document: NSDocument {
 
+    var employees_ : [Person]
+    
+    @objc
+    var employees : [Person] {
+        get {
+            return employees_
+        }
+        set {
+            if newValue == employees_ {
+                return
+            }
+                
+            employees_ = newValue
+        }
+    }
+    
     override init() {
+        employees_ = []
         super.init()
         // Add your subclass-specific initialization here.
     }
@@ -37,7 +54,6 @@ class Document: NSDocument {
         // If you override either of these, you should also override -isEntireFileLoaded to return false if the contents are lazily loaded.
         throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
     }
-
 
 }
 
