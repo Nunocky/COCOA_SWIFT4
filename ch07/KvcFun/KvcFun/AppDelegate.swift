@@ -13,7 +13,32 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
 
+//    @objc
+//    var fido = 0
 
+    var fido_ = 0
+
+    @objc
+    var fido : Int {
+        get {
+            NSLog("getter is returning %d", fido_)
+            return fido_
+        }
+
+        set {
+            NSLog("setter is called with %d", newValue)
+            fido_ = newValue
+        }
+    }
+    
+    override init() {
+        super.init()
+        
+        self.setValue(5, forKey: "fido")
+        let num = self.value(forKey: "fido") as! NSNumber
+        NSLog("%d", num.intValue)
+    }
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
     }
