@@ -10,24 +10,11 @@ import Cocoa
 
 class Document: NSDocument {
 
-    var employees_ : [Person]
-    
     @objc
-    var employees : [Person] {
-        get {
-            return employees_
-        }
-        set {
-            if newValue == employees_ {
-                return
-            }
-                
-            employees_ = newValue
-        }
-    }
+    var employees : [Person]
     
     override init() {
-        employees_ = []
+        employees = []
         super.init()
         // Add your subclass-specific initialization here.
     }
@@ -55,5 +42,34 @@ class Document: NSDocument {
         throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
     }
 
+    @objc dynamic
+    func insertObject(_ employee : Person, inEmployeesAtIndex index: Int) {
+        let undo = self.undoManager!
+        
+        undo.registerUndo(withTarget: self) { targetSelf in
+            targetSelf.removeObjectFromEmployeesAtIndex(index)
+        }
+        
+        if !undo.isUndoing {
+            undo.setActionName("Add Person")
+        }
+
+        employees.insert(employee, at: index)
+    }
+    
+    @objc dynamic
+    func removeObjectFromEmployeesAtIndex(_ index: Int) {
+        let person : Person = employees[index]
+        let undo = self.undoManager!
+        
+        undo.registerUndo(withTarget: self) { targetSelf in
+            targetSelf.insertObject(person, inEmployeesAtIndex: index)
+        }
+        
+        if !undo.isUndoing {
+            undo.setActionName("Remove Person")
+        }
+        employees.remove(at: index)
+    }
 }
 
