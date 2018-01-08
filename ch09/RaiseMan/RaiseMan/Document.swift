@@ -8,10 +8,23 @@
 
 import Cocoa
 
+private var kViewControllerContext: UInt8 = 0
+
 class Document: NSDocument {
 
     @objc
-    var employees : [Person]
+    var employees : [Person] {
+        willSet {
+            for p:Person in employees {
+                self.stopObservingPerson(p)
+            }
+        }
+        didSet {
+            for p:Person in employees {
+                self.startObservingPerson(p)
+            }
+        }
+    }
     
     override init() {
         employees = []
@@ -54,6 +67,7 @@ class Document: NSDocument {
             undo.setActionName("Add Person")
         }
 
+        startObservingPerson(employee)
         employees.insert(employee, at: index)
     }
     
@@ -69,7 +83,55 @@ class Document: NSDocument {
         if !undo.isUndoing {
             undo.setActionName("Remove Person")
         }
+        
+        stopObservingPerson(person)
         employees.remove(at: index)
+    }
+    
+    func startObservingPerson(_ p : Person) {
+        p.addObserver(self,
+                      forKeyPath: "personName",
+                      options: NSKeyValueObservingOptions.old,
+                      context: &kViewControllerContext)
+
+        p.addObserver(self,
+                      forKeyPath: "expectedRaise",
+                      options: NSKeyValueObservingOptions.old,
+                      context: &kViewControllerContext)
+    }
+
+    func stopObservingPerson(_ p : Person) {
+        p.removeObserver(self, forKeyPath: "personName")
+        p.removeObserver(self, forKeyPath: "expectedRaise")
+    }
+    
+    func changeKeyPath(keyPath:String,
+                       ofObject obj:AnyObject,
+                       toValue newValue:AnyObject) {
+        obj.setValue(newValue, forKeyPath:keyPath)
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if context != &kViewControllerContext {
+            // コンテキストが一致しない場合、このメッセージは
+            // スーパークラスに宛てたものと判断される
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+            return
+        }
+        
+        guard let undo = self.undoManager else {
+            return
+        }
+        
+        let oldValue = change?[.oldKey]
+        
+        undo.registerUndo(withTarget: self) { (targetSelf) in
+            targetSelf.changeKeyPath(keyPath:keyPath!,
+                                     ofObject:object as AnyObject,
+                                     toValue:oldValue as AnyObject)
+        }
+        
+        undo.setActionName("Edit")
     }
 }
 
