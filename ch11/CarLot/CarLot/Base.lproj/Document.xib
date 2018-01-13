@@ -276,7 +276,7 @@
             </connections>
             <point key="canvasLocation" x="138.5" y="171.5"/>
         </window>
-        <arrayController mode="entity" entityName="Car" automaticallyPreparesContent="YES" id="338-zK-MuH" userLabel="Cars">
+        <arrayController mode="entity" entityName="Car" automaticallyPreparesContent="YES" id="338-zK-MuH" userLabel="Cars" customClass="CarArrayController" customModule="CarLot" customModuleProvider="target">
             <connections>
                 <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="Tpp-eW-DFM"/>
             </connections>

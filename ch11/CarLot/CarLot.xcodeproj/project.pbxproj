@@ -13,6 +13,7 @@
 		99CB9A472009DD110049A233 /* Document.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 99CB9A452009DD110049A233 /* Document.xcdatamodeld */; };
 		99CB9A492009DD110049A233 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99CB9A482009DD110049A233 /* Assets.xcassets */; };
 		99CB9A4C2009DD110049A233 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99CB9A4A2009DD110049A233 /* MainMenu.xib */; };
+		99CB9A552009EB810049A233 /* CarArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CB9A542009EB810049A233 /* CarArrayController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		99CB9A4B2009DD110049A233 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		99CB9A4D2009DD110049A233 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99CB9A4E2009DD110049A233 /* CarLot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CarLot.entitlements; sourceTree = "<group>"; };
+		99CB9A542009EB810049A233 /* CarArrayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarArrayController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				99CB9A4D2009DD110049A233 /* Info.plist */,
 				99CB9A4E2009DD110049A233 /* CarLot.entitlements */,
 				99CB9A452009DD110049A233 /* Document.xcdatamodeld */,
+				99CB9A542009EB810049A233 /* CarArrayController.swift */,
 			);
 			path = CarLot;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99CB9A552009EB810049A233 /* CarArrayController.swift in Sources */,
 				99CB9A472009DD110049A233 /* Document.xcdatamodeld in Sources */,
 				99CB9A412009DD110049A233 /* Document.swift in Sources */,
 				99CB9A3F2009DD110049A233 /* AppDelegate.swift in Sources */,
