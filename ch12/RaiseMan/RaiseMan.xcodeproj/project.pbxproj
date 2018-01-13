@@ -16,6 +16,7 @@
 		99CB9A582009F79F0049A233 /* PreferenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CB9A562009F79F0049A233 /* PreferenceController.swift */; };
 		99CB9A592009F79F0049A233 /* PreferenceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99CB9A572009F79F0049A233 /* PreferenceController.xib */; };
 		99CB9A5B2009F8A50049A233 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CB9A5A2009F8A50049A233 /* AppController.swift */; };
+		99CB9A5F2009FC430049A233 /* AboutPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99CB9A5D2009FC430049A233 /* AboutPanel.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		99CB9A562009F79F0049A233 /* PreferenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceController.swift; sourceTree = "<group>"; };
 		99CB9A572009F79F0049A233 /* PreferenceController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferenceController.xib; sourceTree = "<group>"; };
 		99CB9A5A2009F8A50049A233 /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
+		99CB9A5D2009FC430049A233 /* AboutPanel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutPanel.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				99CB9A562009F79F0049A233 /* PreferenceController.swift */,
 				99CB9A572009F79F0049A233 /* PreferenceController.xib */,
 				99CB9A5A2009F8A50049A233 /* AppController.swift */,
+				99CB9A5D2009FC430049A233 /* AboutPanel.xib */,
 			);
 			path = RaiseMan;
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 				99CB9A592009F79F0049A233 /* PreferenceController.xib in Resources */,
 				997980532001FF3200D63DB3 /* Assets.xcassets in Resources */,
 				997980512001FF3200D63DB3 /* Document.xib in Resources */,
+				99CB9A5F2009FC430049A233 /* AboutPanel.xib in Resources */,
 				997980562001FF3200D63DB3 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
