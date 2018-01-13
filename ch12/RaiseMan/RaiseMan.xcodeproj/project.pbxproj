@@ -64,7 +64,6 @@
 			isa = PBXGroup;
 			children = (
 				9979804B2001FF3200D63DB3 /* AppDelegate.swift */,
-				99CB9A5A2009F8A50049A233 /* AppController.swift */,
 				9979804D2001FF3200D63DB3 /* Document.swift */,
 				9979804F2001FF3200D63DB3 /* Document.xib */,
 				997980522001FF3200D63DB3 /* Assets.xcassets */,
@@ -74,6 +73,7 @@
 				9979805E2001FFEA00D63DB3 /* Person.swift */,
 				99CB9A562009F79F0049A233 /* PreferenceController.swift */,
 				99CB9A572009F79F0049A233 /* PreferenceController.xib */,
+				99CB9A5A2009F8A50049A233 /* AppController.swift */,
 			);
 			path = RaiseMan;
 			sourceTree = "<group>";

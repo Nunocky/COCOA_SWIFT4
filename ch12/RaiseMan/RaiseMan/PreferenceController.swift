@@ -11,6 +11,10 @@ import Cocoa
 class PreferenceController: NSWindowController {
     @IBOutlet weak var colorWell: NSColorWell!
     @IBOutlet weak var checkBox: NSButton!
+
+    override var windowNibName : NSNib.Name {
+        return NSNib.Name("PreferenceController")
+    }
     
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -19,10 +23,12 @@ class PreferenceController: NSWindowController {
     }
  
     @IBAction func changeBackgroundColor(_ sender : Any) {
-        
+        let color = colorWell.color
+        NSLog("Color changed : %@", color)
     }
     
     @IBAction func changeNewEmptyDoc(_ sender : Any) {
-        
+        let state = checkBox.state
+        NSLog("Checkbox changed %ld", state.rawValue)
     }
 }

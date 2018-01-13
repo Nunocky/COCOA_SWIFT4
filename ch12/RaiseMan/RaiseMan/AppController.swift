@@ -12,6 +12,10 @@ class AppController: NSObject {
     var preferenceController : PreferenceController? = nil
     
     @IBAction func showPreferenceController(_ sender : Any) {
-    
+        if preferenceController == nil {
+            preferenceController = PreferenceController()
+        }
+        
+        preferenceController?.showWindow(self)
     }
 }
