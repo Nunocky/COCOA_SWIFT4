@@ -60,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				99CB9A3E2009DD110049A233 /* AppDelegate.swift */,
+				99CB9A542009EB810049A233 /* CarArrayController.swift */,
 				99CB9A402009DD110049A233 /* Document.swift */,
 				99CB9A422009DD110049A233 /* Document.xib */,
 				99CB9A482009DD110049A233 /* Assets.xcassets */,
@@ -67,7 +68,6 @@
 				99CB9A4D2009DD110049A233 /* Info.plist */,
 				99CB9A4E2009DD110049A233 /* CarLot.entitlements */,
 				99CB9A452009DD110049A233 /* Document.xcdatamodeld */,
-				99CB9A542009EB810049A233 /* CarArrayController.swift */,
 			);
 			path = CarLot;
 			sourceTree = "<group>";
