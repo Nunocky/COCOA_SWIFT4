@@ -186,5 +186,10 @@ class Document: NSDocument {
             tableView.editColumn(0, row: row, with: nil, select: true)
         }
     }
+    
+    override func windowControllerDidLoadNib(_ windowController: NSWindowController) {
+        super.windowControllerDidLoadNib(windowController)
+        tableView.backgroundColor = PreferenceController.preferenceTableBgColor
+    }
 }
 

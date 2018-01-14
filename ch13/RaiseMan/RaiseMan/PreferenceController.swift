@@ -15,7 +15,7 @@ class PreferenceController: NSWindowController {
     static let BNRTableBgColorKey = "BNRTableBackgroundColor"
     static let BNREmptyDocKey = "BNREmptyDocumentFlag"
 
-    var preferenceTableBgColor : NSColor {
+    static var preferenceTableBgColor : NSColor {
         get {
             let defaults = UserDefaults.standard
             let colorAsData = defaults.object(forKey: PreferenceController.BNRTableBgColorKey) as! Data
@@ -30,7 +30,7 @@ class PreferenceController: NSWindowController {
         }
     }
     
-    var preferenceEmptyDoc: Bool {
+    static var preferenceEmptyDoc: Bool {
         get {
             let defaults = UserDefaults.standard
             return defaults.bool(forKey: PreferenceController.BNREmptyDocKey)
@@ -50,19 +50,19 @@ class PreferenceController: NSWindowController {
         super.windowDidLoad()
 
         // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
-        colorWell.color = self.preferenceTableBgColor
-        checkBox.state = (self.preferenceEmptyDoc) ? .on : .off
+        colorWell.color = PreferenceController.preferenceTableBgColor
+        checkBox.state = (PreferenceController.preferenceEmptyDoc) ? .on : .off
     }
  
     @IBAction func changeBackgroundColor(_ sender : Any) {
         let color = colorWell.color
-        self.preferenceTableBgColor = color
+        PreferenceController.preferenceTableBgColor = color
         NSLog("Color changed : %@", color)
     }
     
     @IBAction func changeNewEmptyDoc(_ sender : Any) {
         let state = checkBox.state
-        self.preferenceEmptyDoc = (state == .on)
+        PreferenceController.preferenceEmptyDoc = (state == .on)
         NSLog("Checkbox changed %ld", state.rawValue)
     }
 }

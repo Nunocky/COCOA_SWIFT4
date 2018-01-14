@@ -36,4 +36,9 @@ class AppController: NSObject {
         _ = Bundle.main.loadNibNamed(NSNib.Name("AboutPanel"), owner: self, topLevelObjects: nil)
     }
     
+    @objc
+    func applicationShouldOpenUntitledFile(_ sender : NSApplication) -> Bool {
+        return PreferenceController.preferenceEmptyDoc
+    }
+    
 }
