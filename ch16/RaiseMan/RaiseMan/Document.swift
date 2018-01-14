@@ -225,11 +225,16 @@ class Document: NSDocument {
         }
         
         let alert = NSAlert()
-        alert.messageText = "Do you really wany to remove these people?"
-        alert.addButton(withTitle: "Remove")
-        alert.addButton(withTitle: "Cancel")
+        //        alert.messageText = "Do you really wany to remove these people?"
+        //        alert.addButton(withTitle: "Remove")
+        //        alert.addButton(withTitle: "Cancel")
+        alert.messageText = NSLocalizedString("REMOVE_MSG", comment: "Remove")
+        alert.addButton(withTitle: NSLocalizedString("REMOVE", comment: "Remove"))
+        alert.addButton(withTitle: NSLocalizedString("CANCEL", comment: "Cancel"))
         alert.addButton(withTitle: "Keep, but no raise")
-        alert.informativeText = String(format:"%d people will be removed", count)
+        //        alert.informativeText = String(format:"%d people will be removed", count)
+        alert.informativeText = String(format:NSLocalizedString("REMOVE_INF", comment: "%d people will be removed"), count)
+
         alert.beginSheetModal(for: tableView.window!) { (response) -> Void in
             NSLog("Alert sheet ended")
             if (response == NSApplication.ModalResponse.alertFirstButtonReturn) {
