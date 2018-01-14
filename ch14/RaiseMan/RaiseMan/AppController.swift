@@ -41,4 +41,20 @@ class AppController: NSObject {
         return PreferenceController.preferenceEmptyDoc
     }
     
+    @objc
+    func applicationWillResignActive(_ notification: Notification) {
+        NSLog("applicationWillResignActive")
+    }
+    
+    @objc
+    func applicationDidResignActive(_ notification: Notification) {
+        NSLog("applicationDidResignActive")
+        NSSound.beep()
+    }
+    
+    @objc
+    func applicationDidBecomeActive(_ notification: Notification) {
+        NSLog("applicationDidBecomeActive")
+    }
+    
 }
