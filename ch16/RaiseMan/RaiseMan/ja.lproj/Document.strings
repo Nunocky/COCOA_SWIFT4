@@ -1,0 +1,21 @@
+
+/* Class = "NSTableColumn"; headerCell.title = "Name"; ObjectID = "Dsl-wa-piE"; */
+"Dsl-wa-piE.headerCell.title" = "名前";
+
+/* Class = "NSTableColumn"; headerCell.title = "Raise"; ObjectID = "N2H-tJ-VEt"; */
+"N2H-tJ-VEt.headerCell.title" = "昇給率";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "f1G-nj-rwh"; */
+"f1G-nj-rwh.title" = "Text Cell";
+
+/* Class = "NSButtonCell"; title = "Add Employee"; ObjectID = "fH0-p0-VF7"; */
+"fH0-p0-VF7.title" = "従業員を追加";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "jeh-Gl-FP7"; */
+"jeh-Gl-FP7.title" = "Text Cell";
+
+/* Class = "NSButtonCell"; title = "Remove"; ObjectID = "my7-gc-uum"; */
+"my7-gc-uum.title" = "従業員を削除";
+
+/* Class = "NSWindow"; title = "Window"; ObjectID = "xOd-HO-29H"; */
+"xOd-HO-29H.title" = "Window";
