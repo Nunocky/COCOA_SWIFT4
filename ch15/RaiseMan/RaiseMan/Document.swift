@@ -228,11 +228,19 @@ class Document: NSDocument {
         alert.messageText = "Do you really wany to remove these people?"
         alert.addButton(withTitle: "Remove")
         alert.addButton(withTitle: "Cancel")
+        alert.addButton(withTitle: "Keep, but no raise")
         alert.informativeText = String(format:"%d people will be removed", count)
         alert.beginSheetModal(for: tableView.window!) { (response) -> Void in
             NSLog("Alert sheet ended")
             if (response == NSApplication.ModalResponse.alertFirstButtonReturn) {
                 self.employeeController.remove(nil)
+            }
+            else if(response == NSApplication.ModalResponse.alertThirdButtonReturn) {
+                NSLog("Keep, but no raise")
+                let people = selectedPeople as! [Person]
+                for person in people {
+                    person.expectedRaise = 0
+                }
             }
         }
     }
