@@ -218,5 +218,23 @@ class Document: NSDocument {
         tableView.backgroundColor = color
     }
     
+    @IBAction func removeEmployee(_ sender : Any) {
+        let selectedPeople = employeeController.selectedObjects
+        guard let count = selectedPeople?.count else {
+            return
+        }
+        
+        let alert = NSAlert()
+        alert.messageText = "Do you really wany to remove these people?"
+        alert.addButton(withTitle: "Remove")
+        alert.addButton(withTitle: "Cancel")
+        alert.informativeText = String(format:"%d people will be removed", count)
+        alert.beginSheetModal(for: tableView.window!) { (response) -> Void in
+            NSLog("Alert sheet ended")
+            if (response == NSApplication.ModalResponse.alertFirstButtonReturn) {
+                self.employeeController.remove(nil)
+            }
+        }
+    }
 }
 
