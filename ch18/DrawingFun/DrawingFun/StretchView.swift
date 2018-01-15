@@ -12,7 +12,7 @@ class StretchView: NSView {
 
     var path : NSBezierPath
     
-    @objc dynamic
+    @objc // dynamic
     var opacity : CGFloat {
         didSet {
             self.needsDisplay = true
@@ -21,10 +21,27 @@ class StretchView: NSView {
     
     var image : NSImage? {
         didSet{
+            let imageSize = image!.size
+            downPoint = NSZeroPoint
+            currentPoint.x = downPoint.x + imageSize.width
+            currentPoint.y = downPoint.y + imageSize.height
             self.needsDisplay = true
         }
     }
     
+    var downPoint : NSPoint
+    var currentPoint : NSPoint
+    
+    var currentRect : NSRect {
+        get {
+            let minX = min(downPoint.x, currentPoint.x)
+            let maxX = max(downPoint.x, currentPoint.x)
+            let minY = min(downPoint.y, currentPoint.y)
+            let maxY = max(downPoint.y, currentPoint.y)
+            return NSMakeRect(minX, minY, maxX - minX, maxY - minY)
+        }
+    
+    }
 //    override init(frame frameRect: NSRect) {
 //        super.init(frame: frameRect)
 //    }
@@ -34,6 +51,9 @@ class StretchView: NSView {
         path = NSBezierPath()
         opacity = 1.0
         image = nil
+        downPoint = NSZeroPoint
+        currentPoint = NSZeroPoint
+        
         super.init(coder: decoder)
 
         path.lineWidth = 3.0
@@ -63,10 +83,10 @@ class StretchView: NSView {
             imageRect.origin = NSZeroPoint;
             imageRect.size = img.size
             
-            let drawingRect = imageRect
+            //let drawingRect = imageRect
+            let drawingRect = self.currentRect
             img.draw(in: drawingRect, from: imageRect, operation: .sourceOver, fraction: opacity)
         }
-        
     }
 
     func randomPoint() -> NSPoint {
@@ -88,16 +108,25 @@ class StretchView: NSView {
     // MARK: - Events
     override func mouseDown(with event: NSEvent) {
         NSLog("mouseDown: %ld", event.clickCount)
+        let p = event.locationInWindow
+        downPoint = self.convert(p, from: nil)
+        currentPoint = downPoint
+        self.needsDisplay = true
     }
     
     override func mouseDragged(with event: NSEvent) {
         let p = event.locationInWindow
+        currentPoint = self.convert(p, from: nil)
+        self.autoscroll(with: event)
+        self.needsDisplay = true
         NSLog("mouseDragged: %@", NSStringFromPoint(p))
     }
     
-    
     override func mouseUp(with event: NSEvent) {
         NSLog("mouseUp")
+        let p = event.locationInWindow
+        currentPoint = self.convert(p, from: nil)
+        self.needsDisplay = true
     }
 }
 
