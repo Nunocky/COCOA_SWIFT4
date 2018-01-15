@@ -12,6 +12,19 @@ class StretchView: NSView {
 
     var path : NSBezierPath
     
+    @objc dynamic
+    var opacity : CGFloat {
+        didSet {
+            self.needsDisplay = true
+        }
+    }
+    
+    var image : NSImage? {
+        didSet{
+            self.needsDisplay = true
+        }
+    }
+    
 //    override init(frame frameRect: NSRect) {
 //        super.init(frame: frameRect)
 //    }
@@ -19,7 +32,8 @@ class StretchView: NSView {
     required init?(coder decoder: NSCoder) {
         //fatalError("init(coder:) has not been implemented")
         path = NSBezierPath()
-        
+        opacity = 1.0
+        image = nil
         super.init(coder: decoder)
 
         path.lineWidth = 3.0
@@ -43,6 +57,16 @@ class StretchView: NSView {
         NSColor.white.set()
         path.stroke()
         //path.fill()
+        
+        if let img = image {
+            var imageRect = NSRect()
+            imageRect.origin = NSZeroPoint;
+            imageRect.size = img.size
+            
+            let drawingRect = imageRect
+            img.draw(in: drawingRect, from: imageRect, operation: .sourceOver, fraction: opacity)
+        }
+        
     }
 
     func randomPoint() -> NSPoint {
@@ -55,11 +79,11 @@ class StretchView: NSView {
     }
     
     // ビューを反転系で扱う
-    override var isFlipped: Bool {
-        get {
-            return true
-        }
-    }
+//    override var isFlipped: Bool {
+//        get {
+//            return true
+//        }
+//    }
     
     // MARK: - Events
     override func mouseDown(with event: NSEvent) {
