@@ -53,4 +53,11 @@ class StretchView: NSView {
         result.y = r.origin.y + (CGFloat)(arc4random() % (UInt32)(r.size.height))
         return result
     }
+    
+    // ビューを反転系で扱う
+    override var isFlipped: Bool {
+        get {
+            return true
+        }
+    }
 }
