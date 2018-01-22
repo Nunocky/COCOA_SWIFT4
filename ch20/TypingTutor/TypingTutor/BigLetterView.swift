@@ -10,21 +10,38 @@ import Cocoa
 
 class BigLetterView: NSView {
     
-    var bgColor : NSColor = NSColor.yellow {
+    var bgColor : NSColor {
         didSet {
             self.needsDisplay = true
         }
     }
     
-    var string : NSString = "" {
+    var string : String {
         didSet {
-            self.needsDisplay = true
             NSLog("The string is now %@", string)
+            self.needsDisplay = true
         }
     }
 
-    var attributes :[NSAttributedStringKey : Any] = [:]
+    var attributes :[NSAttributedStringKey : Any]
 
+    func prepareAttributes() {
+        attributes[.font] = NSFont.userFont(ofSize: 25)
+        attributes[.foregroundColor] = NSColor.red
+    }
+    
+//    override init(frame frameRect: NSRect) {
+//    }
+    
+    required init?(coder decoder: NSCoder) {
+        string = ""
+        bgColor = NSColor.yellow
+        attributes = [:]
+        super.init(coder: decoder)
+        prepareAttributes()
+    }
+    
+    
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
 
@@ -83,7 +100,7 @@ class BigLetterView: NSView {
     }
     
     override func insertText(_ insertString: Any) {
-        self.string = insertString as! NSString
+        self.string = insertString as! String
     }
     
     override func insertTab(_ sender: Any?) {
