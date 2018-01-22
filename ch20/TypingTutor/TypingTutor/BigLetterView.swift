@@ -138,6 +138,37 @@ class BigLetterView: NSView {
         NSLog("mouse exited")
         isHighlighted = false
         self.needsDisplay = true
+    }
+    
+    @IBAction func savePDF(_ sender : Any) {
+        let panel = NSSavePanel()
+        panel.allowedFileTypes = ["pdf"]
+        
+        guard let window = self.window else {
+            return
+        }
 
+
+        panel.beginSheetModal(for: window) { (response) in
+            if response == NSApplication.ModalResponse.OK {
+                let r = self.bounds
+                let data = self.dataWithPDF(inside: r)
+                
+                guard let url = panel.url else {
+                    return
+                }
+
+                do {
+                    try data.write(to: url)
+                }
+                catch {
+                    //NSLog("%@", error.localizedDescription)
+                    let a = NSAlert(error: error)
+                    a.runModal()
+                }
+            }
+        }
+        
+        
     }
 }
