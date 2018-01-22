@@ -28,6 +28,13 @@ class BigLetterView: NSView {
     func prepareAttributes() {
         attributes[.font] = NSFont.userFont(ofSize: 25)
         attributes[.foregroundColor] = NSColor.red
+        
+        // 課題1 : 文字を影付きで表示する
+        let s = NSShadow()
+        s.shadowOffset = NSSize(width: 4, height: -4)
+        s.shadowBlurRadius = 2.0
+        
+        attributes[NSAttributedStringKey.shadow] = s
     }
     
 //    override init(frame frameRect: NSRect) {
