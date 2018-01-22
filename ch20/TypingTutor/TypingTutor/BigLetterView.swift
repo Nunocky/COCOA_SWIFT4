@@ -10,6 +10,23 @@ import Cocoa
 
 class BigLetterView: NSView {
     
+    @objc
+    var bold : Bool = false {
+        didSet {
+            prepareAttributes()
+            self.needsDisplay = true
+        }
+    }
+
+    @objc
+    var italic : Bool = false {
+        didSet {
+            prepareAttributes()
+            self.needsDisplay = true
+        }
+    }
+
+    
     var bgColor : NSColor {
         didSet {
             self.needsDisplay = true
@@ -26,15 +43,28 @@ class BigLetterView: NSView {
     var attributes :[NSAttributedStringKey : Any]
 
     func prepareAttributes() {
-        attributes[.font] = NSFont.userFont(ofSize: 25)
+        var font = NSFont.userFont(ofSize: 25)
+        let fontManager = NSFontManager.shared
+
+        if bold {
+            font = fontManager.convert(font!, toHaveTrait: NSFontTraitMask.boldFontMask)
+        }
+        
+        if italic {
+            font = fontManager.convert(font!, toHaveTrait: NSFontTraitMask.italicFontMask)
+        }
+        
+        attributes[.font] = font
+
         attributes[.foregroundColor] = NSColor.red
         
         // 課題1 : 文字を影付きで表示する
         let s = NSShadow()
         s.shadowOffset = NSSize(width: 4, height: -4)
         s.shadowBlurRadius = 2.0
-        
         attributes[NSAttributedStringKey.shadow] = s
+        
+
     }
     
 //    override init(frame frameRect: NSRect) {
