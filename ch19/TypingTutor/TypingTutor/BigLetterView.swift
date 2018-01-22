@@ -31,10 +31,11 @@ class BigLetterView: NSView {
         bgColor.set()
         NSBezierPath.fill(bounds)
         
-        if self.window?.firstResponder == self {
-            NSColor.keyboardFocusIndicatorColor.set()
-            NSBezierPath.defaultLineWidth = 4.0
+        if self.window?.firstResponder == self  && NSGraphicsContext.currentContextDrawingToScreen() {
+            NSGraphicsContext.saveGraphicsState()
+            NSFocusRingPlacement.only.set()
             NSBezierPath.stroke(bounds)
+            NSGraphicsContext.restoreGraphicsState()
         }
     }
  
@@ -53,7 +54,8 @@ class BigLetterView: NSView {
     
     override func resignFirstResponder() -> Bool {
         NSLog("Resigning")
-        self.needsDisplay = true
+        //self.needsDisplay = true
+        self.setKeyboardFocusRingNeedsDisplay(self.bounds)
         return true
     }
     
