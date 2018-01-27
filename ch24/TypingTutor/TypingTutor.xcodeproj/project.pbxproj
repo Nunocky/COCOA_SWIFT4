@@ -12,7 +12,7 @@
 		9951462B2015ABB300BCD556 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 995146292015ABB300BCD556 /* MainMenu.xib */; };
 		995146342015ABCB00BCD556 /* BigLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995146332015ABCB00BCD556 /* BigLetterView.swift */; };
 		99514636201CA76C00BCD556 /* NSString+FirstLetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99514635201CA76C00BCD556 /* NSString+FirstLetter.swift */; };
-		99514638201CB47700BCD556 /* TurorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99514637201CB47700BCD556 /* TurorController.swift */; };
+		99514638201CB47700BCD556 /* TutorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99514637201CB47700BCD556 /* TutorController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,7 +24,7 @@
 		9951462D2015ABB300BCD556 /* TypingTutor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TypingTutor.entitlements; sourceTree = "<group>"; };
 		995146332015ABCB00BCD556 /* BigLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigLetterView.swift; sourceTree = "<group>"; };
 		99514635201CA76C00BCD556 /* NSString+FirstLetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSString+FirstLetter.swift"; sourceTree = "<group>"; };
-		99514637201CB47700BCD556 /* TurorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurorController.swift; sourceTree = "<group>"; };
+		99514637201CB47700BCD556 /* TutorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +64,7 @@
 				9951462D2015ABB300BCD556 /* TypingTutor.entitlements */,
 				995146332015ABCB00BCD556 /* BigLetterView.swift */,
 				99514635201CA76C00BCD556 /* NSString+FirstLetter.swift */,
-				99514637201CB47700BCD556 /* TurorController.swift */,
+				99514637201CB47700BCD556 /* TutorController.swift */,
 			);
 			path = TypingTutor;
 			sourceTree = "<group>";
@@ -140,7 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99514638201CB47700BCD556 /* TurorController.swift in Sources */,
+				99514638201CB47700BCD556 /* TutorController.swift in Sources */,
 				99514636201CA76C00BCD556 /* NSString+FirstLetter.swift in Sources */,
 				995146262015ABB300BCD556 /* AppDelegate.swift in Sources */,
 				995146342015ABCB00BCD556 /* BigLetterView.swift in Sources */,

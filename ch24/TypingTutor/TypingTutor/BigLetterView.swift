@@ -43,7 +43,7 @@ class BigLetterView: NSView, NSDraggingSource {
     var attributes :[NSAttributedStringKey : Any]
 
     func prepareAttributes() {
-        var font = NSFont.userFont(ofSize: 25)
+        var font = NSFont.userFont(ofSize: 70)
         let fontManager = NSFontManager.shared
 
         if bold {
