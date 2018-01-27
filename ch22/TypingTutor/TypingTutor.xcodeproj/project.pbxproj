@@ -11,6 +11,7 @@
 		995146282015ABB300BCD556 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 995146272015ABB300BCD556 /* Assets.xcassets */; };
 		9951462B2015ABB300BCD556 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 995146292015ABB300BCD556 /* MainMenu.xib */; };
 		995146342015ABCB00BCD556 /* BigLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995146332015ABCB00BCD556 /* BigLetterView.swift */; };
+		99514636201CA76C00BCD556 /* NSString+FirstLetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99514635201CA76C00BCD556 /* NSString+FirstLetter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		9951462C2015ABB300BCD556 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9951462D2015ABB300BCD556 /* TypingTutor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TypingTutor.entitlements; sourceTree = "<group>"; };
 		995146332015ABCB00BCD556 /* BigLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigLetterView.swift; sourceTree = "<group>"; };
+		99514635201CA76C00BCD556 /* NSString+FirstLetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSString+FirstLetter.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				9951462C2015ABB300BCD556 /* Info.plist */,
 				9951462D2015ABB300BCD556 /* TypingTutor.entitlements */,
 				995146332015ABCB00BCD556 /* BigLetterView.swift */,
+				99514635201CA76C00BCD556 /* NSString+FirstLetter.swift */,
 			);
 			path = TypingTutor;
 			sourceTree = "<group>";
@@ -134,6 +137,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99514636201CA76C00BCD556 /* NSString+FirstLetter.swift in Sources */,
 				995146262015ABB300BCD556 /* AppDelegate.swift in Sources */,
 				995146342015ABCB00BCD556 /* BigLetterView.swift in Sources */,
 			);

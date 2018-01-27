@@ -227,11 +227,8 @@ class BigLetterView: NSView {
 
         if objects.count > 0 {
             let value = objects[0] as! NSString
-            
-            if value.length == 1 {
-                string = value
-                return true
-            }
+            string = value.bnr_firstLetter()
+            return true
         }
 
         return false
