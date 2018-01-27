@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class BigLetterView: NSView {
+class BigLetterView: NSView, NSDraggingSource {
     
     @objc
     var bold : Bool = false {
@@ -76,6 +76,8 @@ class BigLetterView: NSView {
         attributes = [:]
         super.init(coder: decoder)
         prepareAttributes()
+        
+        self.registerForDraggedTypes([.string])
     }
     
     
@@ -84,8 +86,17 @@ class BigLetterView: NSView {
 
         // Drawing code here.
         let bounds = self.bounds
-        bgColor.set()
-        NSBezierPath.fill(bounds)
+
+        if highlighted {
+            let gr = NSGradient(colors: [NSColor.white, bgColor])
+            gr?.draw(in: bounds, relativeCenterPosition: NSPoint.zero)
+        }
+        else {
+            bgColor.set()
+            NSBezierPath.fill(bounds)
+        }
+//        bgColor.set()
+//        NSBezierPath.fill(bounds)
         
         self.drawStringCenteredIn(r: bounds)
         
@@ -251,5 +262,120 @@ class BigLetterView: NSView {
         }
     }
 
+    // MARK: - Dragging Source
+    var highlighted : Bool = false
+
+    var mouseDownEvent : NSEvent?
     
+    override func mouseDown(with event: NSEvent) {
+        mouseDownEvent = event
+    }
+    
+    override func mouseDragged(with event: NSEvent) {
+        let down = mouseDownEvent!.locationInWindow
+        let drag = event.locationInWindow
+        let distance = sqrt( pow(down.x - drag.x, 2) + pow(down.y - drag.y, 2))
+        
+        if distance < 3 {
+            return
+        }
+        
+        if self.string.length == 0 {
+            return
+        }
+        
+        // 文字列のサイズ
+        let s = NSString(string:self.string).size(withAttributes: attributes)
+        
+        // ドラッグされるイメージ
+        let anImage = NSImage(size: s)
+        
+        // 文字を描画する矩形領域をイメージ上に作成する
+        var imageBounds = NSRect()
+        imageBounds.origin = NSZeroPoint
+        imageBounds.size = s
+        
+        // イメージ上に文字を描画する
+        anImage.lockFocus()
+        self.drawStringCenteredIn(r: imageBounds)
+        anImage.unlockFocus()
+        
+        // mouseDownイベントの位置を取得する
+        var p = self.convert(down, from: nil)
+        
+        // イメージの中央からドラッグを行う
+        p.x = p.x - s.width/2
+        p.y = p.y - s.height/2
+        
+        // ドラッグの開始
+        let dragItem = NSDraggingItem(pasteboardWriter: NSString(string:self.string))
+        dragItem.setDraggingFrame(NSMakeRect(p.x, p.y, s.width, s.height), contents: anImage)
+        
+        let draggingSession = self.beginDraggingSession(with: [dragItem], event: mouseDownEvent!, source: self)
+        draggingSession.animatesToStartingPositionsOnCancelOrFail = true
+        draggingSession.draggingFormation = NSDraggingFormation.none
+    }
+    
+    // ビューをドラッグ元にする
+    func draggingSession(_ session: NSDraggingSession, sourceOperationMaskFor context: NSDraggingContext) -> NSDragOperation {
+        return [.copy, .delete]
+    }
+    
+    // ドロップ後の処理
+    func draggingSession(_ session: NSDraggingSession, endedAt screenPoint: NSPoint, operation: NSDragOperation) {
+        switch (operation) {
+        case NSDragOperation.delete:
+            self.string = ""
+        default:
+            break
+        }
+    }
+    
+    override func draggingUpdated(_ sender: NSDraggingInfo) -> NSDragOperation {
+        let op : NSDragOperation = sender.draggingSourceOperationMask()
+        
+        NSLog("operation mask = %08x", op.rawValue)
+        
+        if sender.draggingSource() as AnyObject === self {
+            return []
+        }
+        
+        return .copy
+    }
+    
+    // MARK: - Dragging Destination
+    
+    override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
+        if sender === self  {
+            return []
+        }
+        
+        highlighted = true
+        self.needsDisplay = true
+        return .copy
+    }
+
+    override func draggingExited(_ sender: NSDraggingInfo?) {
+        highlighted = false
+        self.needsDisplay = true
+    }
+    
+    override func prepareForDragOperation(_ sender: NSDraggingInfo) -> Bool {
+        return true
+    }
+    
+    override func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
+        let pb = sender.draggingPasteboard()
+        if readFromPasteboard(pb) == false {
+            return false
+        }
+        
+        return true
+    }
+    
+    override func concludeDragOperation(_ sender: NSDraggingInfo?) {
+        highlighted = false
+        self.needsDisplay = true
+    }
+
 }

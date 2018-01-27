@@ -693,7 +693,7 @@
                         <rect key="frame" x="20" y="103" width="184" height="237"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <connections>
-                            <outlet property="nextKeyView" destination="omr-vt-eIs" id="Dy3-Cz-64M"/>
+                            <outlet property="nextKeyView" destination="bSf-IR-tMi" id="x3d-z3-stR"/>
                         </connections>
                     </customView>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="omr-vt-eIs">
@@ -742,6 +742,13 @@
                             <binding destination="Voe-Tx-rLC" name="value" keyPath="bigletterview.italic" id="8uH-tl-GHK"/>
                         </connections>
                     </button>
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bSf-IR-tMi" customClass="BigLetterView" customModule="TypingTutor" customModuleProvider="target">
+                        <rect key="frame" x="212" y="103" width="184" height="237"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <connections>
+                            <outlet property="nextKeyView" destination="u3k-Uu-8XS" id="9gU-M1-vIs"/>
+                        </connections>
+                    </customView>
                 </subviews>
             </view>
             <connections>
