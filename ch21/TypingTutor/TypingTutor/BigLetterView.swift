@@ -209,8 +209,14 @@ class BigLetterView: NSView {
     
     // MARK: Pasteboard
     func writeToPasteboard(_ pb : NSPasteboard) {
+        // PDFもペーストボードにコピーする
+        let r = self.bounds
+        let data = self.dataWithPDF(inside: r)
+        let item = NSPasteboardItem()
+        item.setData(data, forType: NSPasteboard.PasteboardType.pdf)
+        
         pb.clearContents()
-        pb.writeObjects([string as NSPasteboardWriting])
+        pb.writeObjects([string as NSPasteboardWriting, item])
     }
     
     func readFromPasteboard(_ pb: NSPasteboard) -> Bool {
