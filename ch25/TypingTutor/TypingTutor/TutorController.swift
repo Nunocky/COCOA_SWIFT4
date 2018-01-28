@@ -11,6 +11,7 @@ import Cocoa
 class TutorController: NSObject {
     @IBOutlet weak var inLetterView : BigLetterView!
     @IBOutlet weak var outLetterView : BigLetterView!
+    @IBOutlet weak var speedSheet : NSWindow!
 
     var lastIndex : Int
     var letters : [NSString]
@@ -85,4 +86,27 @@ class TutorController: NSObject {
         lastIndex = x
         outLetterView.string = letters[lastIndex]
     }
+    
+    
+    // MARK: - 25章
+    @IBAction func showSpeesSheet (_ sender : Any) {
+        // 'beginSheet(_:modalFor:modalDelegate:didEnd:contextInfo:)' was deprecated in OS X 10.10:
+        // Use -[NSWindow beginSheet:completionHandler:] instead
+
+        if let window = inLetterView.window {
+            window.beginSheet(speedSheet, completionHandler: { (response) in
+//                if response == NSApplication.ModalResponse.OK {
+//                }
+            })
+        }
+    }
+    
+    @IBAction func endSpeedSheet (_ sender : Any) {
+        // 'endSheet' was deprecated in OS X 10.10: Use -[NSWindow endSheet:] instead
+        //NSApp.endSheet(speedSheet)
+        if let window = inLetterView.window {
+            window.endSheet(speedSheet)
+        }
+    }
+    
 }
