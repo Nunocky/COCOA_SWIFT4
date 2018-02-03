@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  RaiseMan
+
+  Created by 布川祐人 on 2018/01/14.
+  Copyright © 2018年 NUNOKAWA Masato. All rights reserved.
+*/
+"REMOVE_MSG" = "選択した従業員を削除してもよろしいですか?";
+"REMOVE_INF" = "%d人の従業員が削除されます";
+"REMOVE" = "削除";
+"CANCEL" = "キャンセル";
