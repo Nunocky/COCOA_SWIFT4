@@ -70,14 +70,30 @@ class Document: NSPersistentDocument {
     }
     
     func displayViewController(_ vc : ManagingViewController) {
-        let w = box.window
-        let ended = w?.makeFirstResponder(w)
-        if !ended! {
+        let w = box.window!
+        let ended = w.makeFirstResponder(w)
+        if !ended {
             NSSound.beep()
             return
         }
         
         let v = vc.view
+        
+        // 新しいウィンドウフレームを計算
+        let currentSize = box.contentView!.frame.size
+        let newSize = v.frame.size
+        let deltaWidth = newSize.width - currentSize.width
+        let deltaHeight = newSize.height - currentSize.height
+        var windowFrame = w.frame
+        
+        windowFrame.size.height += deltaHeight
+        windowFrame.origin.y -= deltaHeight
+        windowFrame.size.width += deltaWidth
+
+        // サイズ変更用のボックスをクリア
+        box.contentView = nil
+        w.setFrame(windowFrame, display: true, animate: true)
+
         box.contentView = v
     }
 }
