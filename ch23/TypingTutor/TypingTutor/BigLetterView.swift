@@ -263,8 +263,6 @@ class BigLetterView: NSView, NSDraggingSource {
     }
 
     // MARK: - Dragging Source
-    var highlighted : Bool = false
-
     var mouseDownEvent : NSEvent?
     
     override func mouseDown(with event: NSEvent) {
@@ -344,20 +342,23 @@ class BigLetterView: NSView, NSDraggingSource {
     }
     
     // MARK: - Dragging Destination
-    
+    var highlighted : Bool = false {
+        didSet {
+            self.needsDisplay = true
+        }
+    }
+
     override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
-        if sender === self  {
+        if sender.draggingSource() as AnyObject === self  {
             return []
         }
         
         highlighted = true
-        self.needsDisplay = true
         return .copy
     }
 
     override func draggingExited(_ sender: NSDraggingInfo?) {
         highlighted = false
-        self.needsDisplay = true
     }
     
     override func prepareForDragOperation(_ sender: NSDraggingInfo) -> Bool {
@@ -375,7 +376,6 @@ class BigLetterView: NSView, NSDraggingSource {
     
     override func concludeDragOperation(_ sender: NSDraggingInfo?) {
         highlighted = false
-        self.needsDisplay = true
     }
 
 }
