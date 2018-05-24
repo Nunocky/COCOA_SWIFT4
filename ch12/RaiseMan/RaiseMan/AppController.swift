@@ -9,8 +9,6 @@
 import Cocoa
 
 class AppController: NSObject {
-    @IBOutlet var window : NSWindow?  // これで warningは出なくなるのだけど正しいのか不明
-    
     var preferenceController : PreferenceController? = nil
     
     @IBAction func showPreferenceController(_ sender : Any) {
