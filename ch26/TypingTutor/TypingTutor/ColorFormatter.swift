@@ -63,6 +63,17 @@ class ColorFormatter: Formatter {
         return nil
     }
     
+    override func attributedString(for obj: Any,
+                                   withDefaultAttributes attrs: [NSAttributedStringKey : Any]? = nil) -> NSAttributedString? {
+        if let match = string(for: obj) {
+            var attDict = attrs ?? [:]
+            attDict[.foregroundColor] = obj
+            return NSAttributedString(string: match, attributes: attDict)
+        }
+        
+        return nil
+    }
+    
     override func getObjectValue(_ obj: AutoreleasingUnsafeMutablePointer<AnyObject?>?,
                                  for string: String,
                                  errorDescription error: AutoreleasingUnsafeMutablePointer<NSString?>?) -> Bool {
