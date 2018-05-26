@@ -74,4 +74,45 @@ class ColorFormatter: Formatter {
         error?.pointee = (string + " is not a color") as NSString
         return false
     }
+
+//    override func isPartialStringValid(_ partialString: String,
+//                                       newEditingString newString: AutoreleasingUnsafeMutablePointer<NSString?>?,
+//                                       errorDescription error: AutoreleasingUnsafeMutablePointer<NSString?>?) -> Bool {
+//        if partialString.count == 0 {
+//            return true
+//        }
+//
+//        if firstColorKeyForPartialString(partialString) != nil {
+//            return true
+//        }
+//
+//        error?.pointee = "No such Color" as NSString
+//        return false
+//    }
+    
+    override func isPartialStringValid(_ partialStringPtr: AutoreleasingUnsafeMutablePointer<NSString>,
+                                       proposedSelectedRange proposedSelRangePtr: NSRangePointer?,
+                                       originalString origString: String,
+                                       originalSelectedRange origSelRange: NSRange,
+                                       errorDescription error: AutoreleasingUnsafeMutablePointer<NSString?>?) -> Bool {
+        if partialStringPtr.pointee.length == 0 {
+            return true
+        }
+        if let match = firstColorKeyForPartialString(partialStringPtr.pointee as String) {
+            if origSelRange.location == proposedSelRangePtr?.pointee.location {
+                return true
+            }
+            
+            if match.count != partialStringPtr.pointee.length {
+                proposedSelRangePtr?.pointee.location = partialStringPtr.pointee.length
+                proposedSelRangePtr?.pointee.length = match.count - (proposedSelRangePtr?.pointee.location)!
+                partialStringPtr.pointee = match as NSString
+                return false
+            }
+            
+            return true
+        }
+
+        return false
+    }
 }
