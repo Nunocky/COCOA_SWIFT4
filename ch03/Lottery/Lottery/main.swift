@@ -24,14 +24,15 @@ let cal = NSCalendar.current
 let weekComponents = NSDateComponents()
 
 //乱数ジェネレータをシード
-arc4random_stir()
+//arc4random_stir()
 
 var array : [LotteryEntry] = []
 
 for i in 0..<10 {
     weekComponents.weekday = i
     
-    let iWeeksFromNow = cal.date(byAdding: weekComponents as DateComponents, to: now)
+    let iWeeksFromNow = cal.date(byAdding: weekComponents as DateComponents,
+                                 to: now)
 
     // 0.
     //let newEntry = LotteryEntry()
