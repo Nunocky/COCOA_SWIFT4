@@ -13,13 +13,11 @@ class RandomController: NSObject {
     @IBOutlet weak var textField: NSTextField!
     
     @IBAction func seed(_ sender: Any) {
-        arc4random_stir();
+        // TODO : シードする方法
     }
     
     @IBAction func generate(_ sender: Any) {
-//        let generated = (arc4random() % 100) + 1
-        //        textField.stringValue = String(generated)
-        let generated = arc4random_uniform(100) + 1
+        let generated = Int.random(in: 1...100)  //arc4random_uniform(100) + 1
         textField.stringValue = String(generated)
     }
     
